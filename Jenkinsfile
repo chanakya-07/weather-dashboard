@@ -1,6 +1,11 @@
 pipeline {
   agent any
 
+  environment {
+    AWS_ACCESS_KEY_ID = credentials('aws-access-key')
+    AWS_SECRET_ACCESS_KEY = credentials('aws-secret-key')
+  }
+
   stages {
     stage('Checkout') {
       steps {
@@ -8,18 +13,33 @@ pipeline {
       }
     }
 
-    stage('Build Angular App') {
+    stage('Install Dependencies') {
       steps {
         sh 'npm install'
-        sh 'npm run build -- --configuration=production'
       }
     }
 
-    stage('Deploy to Vercel') {
+    stage('Build Angular App') {
       steps {
-        sh 'echo "Deploying to Vercel..."'
-        // Add Vercel deployment commands here (if needed)
+        sh 'npm run build:ssr'
       }
+    }
+
+    stage('Deploy to S3') {
+      steps {
+        sh '''
+          aws s3 sync dist/weather-dashboard/browser s3://weather-dashboard-nikchan --delete
+        '''
+      }
+    }
+  }
+
+  post {
+    success {
+      echo 'Pipeline succeeded!'
+    }
+    failure {
+      echo 'Pipeline failed!'
     }
   }
 }
