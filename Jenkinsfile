@@ -8,6 +8,13 @@ pipeline {
             }
         }
 
+        stage('Check Node.js and npm') {
+            steps {
+                sh 'node --version'
+                sh 'npm --version'
+            }
+        }
+
         stage('Install Dependencies') {
             steps {
                 sh 'npm install'
