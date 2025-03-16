@@ -4,31 +4,19 @@ options:
 serviceAccount: 'projects/weatherapp-453916/serviceAccounts/cloud-build-sa@weatherapp-453916.iam.gserviceaccount.com'
 
 steps:
-  # Step 1: Install Node.js v18.19 or higher
-  - name: 'node:18'
-    id: 'Install Node.js'
-    entrypoint: 'bash'
-    args: ['-c', 'curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && apt-get install -y nodejs']
-
-  # Step 2: Install dependencies
+  # Step 1: Install dependencies
   - name: 'node:18'
     id: 'Install dependencies'
     entrypoint: 'npm'
     args: ['install']
 
-  # Step 3: Build the Angular project
+  # Step 2: Build the Angular project
   - name: 'node:18'
     id: 'Build Angular project'
     entrypoint: 'npm'
     args: ['run', 'build', '--', '--configuration', 'production']
 
-  # Step 4: Verify the build output
-  - name: 'ubuntu'
-    id: 'Verify build output'
-    entrypoint: 'bash'
-    args: ['-c', 'ls -R dist/weather-dashboard/browser']
-
-  # Step 5: Deploy to Google Cloud Storage (GCS)
+  # Step 3: Deploy to Google Cloud Storage (GCS)
   - name: 'gcr.io/cloud-builders/gsutil'
     id: 'Deploy to GCS'
-    args: ['-m', 'rsync', '-r', '-c', '-d', 'dist/weather-dashboard/browser/', 'gs://weather-dashboard-bucket']
+    args: ['-m', 'rsync', '-r', '-c', '-d', 'dist/weather-dashboard/browser', 'gs://weather-dashboard-bucket']
