@@ -1,8 +1,3 @@
-options:
-  logging: CLOUD_LOGGING_ONLY
-
-serviceAccount: 'projects/weatherapp-453916/serviceAccounts/cloud-build-sa@weatherapp-453916.iam.gserviceaccount.com'
-
 steps:
   # Step 1: Install Node.js v18.19 or higher
   - name: 'node:18'
@@ -20,7 +15,7 @@ steps:
   - name: 'node:18'
     id: 'Build Angular project'
     entrypoint: 'npm'
-    args: ['run', 'build', '--', '--configuration', 'production']
+    args: ['run', 'build', '--', '--configuration', 'production', '--base-href', '/']
 
   # Step 4: Print directory structure
   - name: 'ubuntu'
