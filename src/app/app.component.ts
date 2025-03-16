@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
   weatherData!:any;
   cityName: string = "Timisoara";
 
-  url = `http://api.weatherapi.com/v1/current.json`;
+  url = `https://api.weatherapi.com/v1/current.json`;
   key = 'ebd317e8cbb14aa6ab6204524251801';
   
 
@@ -34,10 +34,19 @@ export class AppComponent implements OnInit {
     this.cityName = "";
   }
 
-  private getWeatherData(cityName: string){
-    this.weatherService.getWeatherData(this.cityName).subscribe(data => {
-      this.weatherData = data;
-      console.log(this.weatherData);
-  });
+  private getWeatherData(cityName: string) {
+    this.weatherService.getWeatherData(cityName).subscribe(
+      (data) => {
+        if (data && data.current) {
+          this.weatherData = data;
+          console.log(this.weatherData);
+        } else {
+          console.error('Invalid data received from the API');
+        }
+      },
+      (error) => {
+        console.error('Error fetching weather data:', error);
+      }
+    );
   }
 }

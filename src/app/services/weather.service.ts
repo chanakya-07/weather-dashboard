@@ -8,13 +8,13 @@ import { Observable } from 'rxjs';
 })
 export class WeatherService {
   private apiKey = 'ebd317e8cbb14aa6ab6204524251801'; 
-  private baseUrl = 'http://api.weatherapi.com/v1';
+  private baseUrl = 'https://api.weatherapi.com/v1';
 
   constructor(private http: HttpClient) {}
 
 
   getWeatherData(city: string): Observable<any> {
-      const url = `http://api.weatherapi.com/v1/current.json?key=${this.apiKey}&q=${city}`;
-      return this.http.get(url);
+    const url = `${this.baseUrl}/current.json?key=${this.apiKey}&q=${city}`; // Use HTTPS here
+    return this.http.get(url);
   }
 }
