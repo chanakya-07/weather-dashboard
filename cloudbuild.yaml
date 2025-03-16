@@ -20,8 +20,8 @@ steps:
   - name: 'node:18'
     id: 'Build Angular project'
     entrypoint: 'npm'
-    args: ['run', 'build', '--', '--configuration', 'production']
-
+    args: ['run', 'build', '--', '--configuration', 'production', '--deploy-url', 'https://storage.googleapis.com/weather-dashboard-bucket/']
+ 
   # Step 4: Print directory structure
   - name: 'ubuntu'
     id: 'Print directory structure'
