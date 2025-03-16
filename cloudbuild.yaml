@@ -1,6 +1,7 @@
 options:
   logging: CLOUD_LOGGING_ONLY
-  serviceAccountEmail: 'cloud-build-sa@weatherapp-453916.iam.gserviceaccount.com'  # Use serviceAccountEmail instead of serviceAccount
+
+serviceAccount: 'projects/weatherapp-453916/serviceAccounts/cloud-build-sa@weatherapp-453916.iam.gserviceaccount.com'  # Correct placement of serviceAccount
 
 steps:
   # Step 1: Install dependencies
