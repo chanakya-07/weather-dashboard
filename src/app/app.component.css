@@ -83,6 +83,7 @@
 .info-block-label img{
     width: 1.5em;
     -webkit-filter: invert(100%);
+    filter: invert(100%);
 }
 
 .info-block-label span{
