@@ -1,134 +1,141 @@
-.container{
+.container {
     width: 400px;
     height: 80vh;
     border-radius: 20px;
-    box-shadow: 10px 10px 10px 10px rgb(26, 26, 48);
-}
-
-.upper {
+    box-shadow: 10px 10px 10px 10px rgba(26, 26, 48, 0.2);
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: white;
+    overflow: hidden;
+    margin: 20px auto;
+  }
+  
+  .upper {
     position: relative;
     overflow: hidden;
     width: 100%;
     height: 50%;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
-
-    img{
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        filter: brightness(70%);
-    }
-}
-
-.weather-data{
+  }
+  
+  .upper img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    filter: brightness(70%);
+    object-fit: cover;
+  }
+  
+  .weather-data {
     position: relative;
     z-index: 1;
     width: 100%;
     height: 100%;
-
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-}
-
-.location {
-    color: white;
     text-align: center;
-    font-size: 1.2em;
-}
-
-.temperature{
-    color: white;
+  }
+  
+  .location {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+  
+  .temperature {
     font-size: 4em;
-    text-align: center;
     font-weight: 900;
-}
-
-
-
-.more-info-label{
-    color: white;
-}
-
-.more-info-container{
-    flex:1;
-    background-color: rgba(255, 255, 255, 0.1);
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-    margin-top: 1em;
-
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-
-.info-block{
-    width: 50%;
-    display: flex;
-    flex-direction: row;
-}
-
-.info-block-label{
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.info-block-label img{
-    width: 1.5em;
-    -webkit-filter: invert(100%);
-    filter: invert(100%);
-}
-
-.info-block-label span{
-    color: white;
-    font-size: 0.8em
-}
-
-.info-block-value{
-    width: 50%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    color: white;
-}
-
-.lower{
-    position: relative;
-    overflow: hidden;
-    width: 100%;
-    height: 50%;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-    padding: 1em;
-
-    display: flex;
-    flex-direction: column;
-}
-.inf{
-    color:white;
-    font-size: 18px;
+  }
+  
+  .inf {
+    font-size: 1.2em;
     font-style: italic;
-}
-
-.search{
-    margin:1em;
+  }
+  
+  .lower {
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .more-info-label {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+  }
+  
+  .more-info-container {
+    flex: 1;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .info-block {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px 0;
+  }
+  
+  .info-block-label img {
+    width: 2em;
+    filter: invert(100%);
+  }
+  
+  .info-block-label span {
+    font-size: 0.9em;
+    margin-top: 5px;
+  }
+  
+  .info-block-value {
+    font-size: 1.2em;
+    margin-top: 5px;
+  }
+  
+  .search {
+    margin: 1em;
     text-align: center;
-}
-
-.search input{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .search input {
     background-color: rgba(255, 255, 255, 0.1);
     border: none;
     outline: none;
     border-radius: 20px;
     padding: 1em;
-    color: #EDEDED;
+    color: white;
     font-size: 0.8em;
     text-align: center;
-}
+    width: 80%;
+    max-width: 300px;
+  }
+
+  .toggle-container {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .toggle-button {
+    padding: 8px 16px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 20px;
+    color: white;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
+  }
+  
+  .toggle-button:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+  }
